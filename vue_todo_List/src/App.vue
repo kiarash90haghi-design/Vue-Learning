@@ -27,7 +27,7 @@
 
         newTask.value = ""
 
-        console.log(tasks)
+        
     }
 </script>
 
@@ -39,6 +39,13 @@
             <input type="text" placeholder="Add Your Task's here..." v-model="newTask">
             <button @click="addTask">Add</button>
         </div>
+
+        <ul class="task-list">
+            <li v-for="task in tasks" :key = "task.id">
+                <input type="checkbox" class="is-done">
+                <span>{{ task.text }}</span>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -63,7 +70,7 @@
 
     .input-row{
         padding: 12px 16px;
-        font-size: 16px;
+        font-size: 16px;   
         border-radius: 10px;
         outline: none;
         transition: all 0.3s ease;
@@ -105,4 +112,15 @@
         color: #888;
     }
 
+    /* ul And li */
+
+    li{
+        max-width: 378px;
+        border-radius: 10px;
+        list-style: none;
+        text-align: left;
+        background-color: #e4e4e4;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
 </style>
