@@ -45,9 +45,9 @@
         </div>
 
         <ul class="task-list">
-            <li v-for="task in tasks" :key="task.id">
+            <li v-for="task in tasks" :key="task.id" :class="{done: task.completed}">
                 <button class="delete" @click="removeTask(task.id)">X</button>
-                <input type="checkbox" class="is-done">
+                <input type="checkbox" class="is-done" v-model="task.completed">
                 <span class="span">{{ task.text }}</span>
             </li>
         </ul>
@@ -138,6 +138,11 @@
     .is-done{
         position: relative;
         right: 25px;
+    }
+
+    .task-list li.done span{
+        text-decoration: line-through;
+        opacity: .6;
     }
 
     /* delete task */
