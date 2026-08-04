@@ -29,6 +29,10 @@
 
         
     }
+
+    function removeTask(id : number){
+        tasks.value = tasks.value.filter((t) => t.id !== id);
+    }
 </script>
 
 <template>
@@ -41,9 +45,10 @@
         </div>
 
         <ul class="task-list">
-            <li v-for="task in tasks" :key = "task.id">
+            <li v-for="task in tasks" :key="task.id">
+                <button class="delete" @click="removeTask(task.id)">X</button>
                 <input type="checkbox" class="is-done">
-                <span>{{ task.text }}</span>
+                <span class="span">{{ task.text }}</span>
             </li>
         </ul>
     </div>
@@ -115,6 +120,7 @@
     /* ul And li */
 
     li{
+        position: relative;
         max-width: 378px;
         border-radius: 10px;
         list-style: none;
@@ -122,5 +128,28 @@
         background-color: #e4e4e4;
         padding: 20px;
         margin-bottom: 20px;
+    }
+
+    .span{
+        position: relative;
+        right: 25px;
+    }
+
+    .is-done{
+        position: relative;
+        right: 25px;
+    }
+
+    /* delete task */
+
+    .delete{
+        position: relative;
+        left: 350px;
+        background-color: red;
+        color: white;
+        border: 1px solid black;
+        height: 25px;
+        width: 25px;
+        border-radius: 6px;
     }
 </style>
